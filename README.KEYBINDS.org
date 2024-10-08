@@ -1,0 +1,52 @@
+#+title:  MYRtré's StumpWM Config
+#+author: MYRtre <Davy G.>
+#+STARTUP: showeverything
+
+* Table of Content :toc:
+- [[#binds][Binds]]
+  - [[#apps-commands][apps-commands]]
+  - [[#player-commands][player-commands]]
+  - [[#window-management-commands][window-management-commands]]
+
+* Binds
+** apps-commands
+| Prefix | Bind | Function |
+| --- | --- | --- |
+| M-a | c or C-c | open terminal |
+| M-a | e | open emacs |
+| M-a | n | open nyxt |
+| M-a | l | open librewolf |
+| M-a | p | open app-launcher |
+
+** player-commands
+| Prefix | Bind | Function |
+| --- | --- | --- |
+| M-m | p | play/pause |
+| M-m | s | stop |
+| M-m | n | next |
+| M-m | b | previous |
+| M-m | z | toggle shuffle |
+| M-m | XF86AudioRaiseVolume | player volume up 5% |
+| M-m | XF86AudioLowerVolume | player volume down 5% |
+
+** window-management-commands
+| Prefix | Bind | Function |
+| --- | --- | --- |
+| C-t | s | Vertical split |
+| C-t | S | Horizontal split |
+| C-t | Q | Maximize Frame |
+| C-t | <Direction-Key> or <Click> | select window |
+| C-t | C-<Direction-Key> | swap frame in direction |
+| C-t | k | kill active frame |
+| C-t | m | select frame bulk move |
+| C-t | M | move bulk select to group |
+| C-t | n | rotate frame |
+| C-t | R | resize-mode |
+| C-t | x | open xkill |
+| C-t | q | prompt to exit |
+| C-t | M-q | Quick exit |
+| C-t | p | toggle push/pop frame to/from floating group |
+| C-t | M-Escape | toggle modeline |
+| C-t | / | toggle gaps |
+| NONE | M-Tab | Switch to previous frame |
+| NONE | s-Tab | list last opened windows |

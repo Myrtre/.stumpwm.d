@@ -1,0 +1,22 @@
+#+title:  MYRtré's StumpWM Config
+#+author: MYRtre <Davy G.>
+#+STARTUP: showeverything
+
+* Table of Content :toc:
+- [[#about-config][About config]]
+- [[#structure][Structure]]
+  - [[#initlisp][init.lisp]]
+  - [[#early-initlisp][early-init.lisp]]
+  - [[#bindlisp][bind.lisp]]
+  - [[#autostartlisp][autostart.lisp]]
+
+* About config
+This is my StumpWM Configuration inspired by all kind of different one, a few noteworthy one:
+- [[https://github.com/logoraz/guix-craft][Logoraz's]]
+- [[https://codeberg.org/Izder456/StumpWM-Config][Izder456's]]
+
+* Structure
+** init.lisp
+** early-init.lisp
+** bind.lisp
+** autostart.lisp
