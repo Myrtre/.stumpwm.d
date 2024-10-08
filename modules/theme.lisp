@@ -1,37 +1,45 @@
-(in-package :stumpwm)
+;;; theme.lisp --- StumpWM theme -*- mode: common-lisp; -*-
+;;; Commentary:
+;;; Code:
 
-;; Fonts
-(load-module "ttf-fonts")
+;; -- Fonts -----
+;; # Load Fonts dir
 (setf xft:*font-dirs* (list (concat +guix-system-path+ "fonts/")
-			    (concat +guix-home-path+ "fonts/"))
+                            (concat +guix-home-path+ "fonts/"))
       clx-truetype:+font-cache-filename+ (concat (getenv "HOME")
-						 "/.local/share/fonts/"
-						 "font-cache.sexp"))
-
+                                                 "/.local/share/fonts/"
+                                                 "font-cache.sexp"))
+;; # Load Fonts
 (xft:cache-fonts)
 (set-font `(,(make-instance ; system
-	      'xft:font :family "Hack"
-	      :subfamily "Regular" :size 11 :antialias t)
-	    ,(make-instance ; system - secondary
-	      'xft:font :family "JetBrains Mono"
-	      :subfamily "Regular" :size 11 :antialias t)
-	    ,(make-instance ; Icons
-	      'xft:font :family "FontAwesome"
-	      :subfamily "Regular" :size 11 :antialias t)))
+                            'xft:font :family "Hack"
+                                      :subfamily "Regular" :size 11 :antialias t)
+             ,(make-instance ; system - secondary
+                             'xft:font :family "JetBrains Mono"
+                                       :subfamily "Regular" :size 11 :antialias t)
+             ,(make-instance ; Icons
+                             'xft:font :family "FontAwesome"
+                                       :subfamily "Regular" :size 11 :antialias t)))
+;; -- Styling -----
+;; -- Focused
+(set-focus-color gruvbox-dark0D)
+(set-float-focus-color gruvbox-dark0D)
+;; -- Unfocused
+(set-unfocus-color gruvbox-dark01)
+(set-float-unfocus-color gruvbox-dark03)
+;; -- Text
+(set-fg-color gruvbox-dark0D)
+;; -- BG
+(set-bg-color gruvbox-dark01)
+;; -- Border
+(set-border-color gruvbox-dark03)
 
-;; Colors
-;; Colors actually in colors.lisp
-(setq *colors* (list
-		gruvbox-dark01
-		gruvbox-dark08
-		gruvbox-dark0B
-		gruvbox-dark0A
-		gruvbox-dark0D
-		gruvbox-dark0C
-		gruvbox-dark06
-		;; Extra
-		gruvbox-dark09
-		gruvbox-dark0E))
 
-(when *initializing*
-  (update-color-map (current-screen)))
+(set-msg-border-width 1)
+
+;; Set Mouse-Keys
+(setf *mouse-focus-policy* :click
+      *float-window-modifier* :SUPER)
+
+
+;;; theme.lisp ends here

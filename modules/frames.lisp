@@ -1,16 +1,16 @@
-(in-package :stumpwm)
+;;; frame.lisp --- Frame based Setting for StumpWM -*- mode: common-lisp; -*-
+;;; Commentary:
+;;; Code:
+
 
 ;; -------------- SWM-GAPS --------------------
 ;; SWM-Gaps - Border Gaps for frames
-(load-module "swm-gaps")
 ;; Set gaps size
 (setf swm-gaps:*head-gaps-size*  0
-      swm-gaps:*inner-gaps-size* 4
-      swm-gaps:*outer-gaps-size* 8)
-
+      swm-gaps:*inner-gaps-size* 6
+      swm-gaps:*outer-gaps-size* 10)
 (when *initializing*
   (swm-gaps:toggle-gaps))
-
 
 ;; -------------- Window Message Settings -------------
 ;; Rename and Create new Groups
@@ -19,43 +19,35 @@
   (gnewbg  "[DEV]")
   (gnewbg  "[WWW]")
   (gnewbg  "[ETC]"))
-
-;; Clear Rules
+(define-frame-preference "[HOME]" (nil t t :class "Tiling"))
+(define-frame-preference "[DEV]" (nil t t :class "Tiling"))
+(define-frame-preference "[WWW]" (nil t t :class "Tiling"))
+(define-frame-preference "[ETC]" (nil t t :class "Stack"))
+;;|--> Clear Rules
 (clear-window-placement-rules)
-
-
-;; Window Split
+;;|--> Group Format
+(setf *group-format* "%n")
+;;|--> Window Split
 (setf *dynamic-group-master-split-ratio* 1/2)
-
-;; X window setting
-;; Tell stumpwm to not honor application window size hints
-(setf *ignore-wm-inc-hints* t)
-
-;; Styling 'nd Stuff
-(set-fg-color             gruvbox-dark06) ;; White
-(set-border-color         gruvbox-dark09) ;; Orange
-(set-msg-border-width     1)
-
-(set-focus-color          gruvbox-dark09) ;; Orange
-(set-unfocus-color        gruvbox-dark03) ;; None
-(set-float-focus-color    gruvbox-dark09) ;; Orange
-(set-float-unfocus-color  gruvbox-dark03) ;; None
-
-
-;; Window format
-(setf *window-format*              (format NIL "^(:fg \"~A\")<%25t>" gruvbox-dark0B)
+;; -- X window settings -----
+(setf *ignore-wm-inc-hints* t)     ; Tell StumpWM to not honor application window size hints
+;; -- Window format -----
+(setf *window-format*              (format NIL "^(:fg \"~A\")<%c>" (nth 8 *colors*))
       *window-border-style*        :thight
       *normal-border-width*        1
-      *float-window-border*        1
-      *hidden-window-color*        "^**"
-      *float-window-title-height*  15)
-
-;; Messaging & Input Window
+      *hidden-window-color*        "^**")
+;;|--> Time-format
+(setf *time-modeline-string* "%I:%M%p")
+;; -- Messaging & Input Window -----
 (setf *key-seq-color* "^6")
 (setf *which-key-format* (concat *key-seq-color* "*~5a^n ~a"))
-
-;; Message Window Settings
+;;|--> Message Windows
 (setf *message-window-padding*    1
       *message-window-y-padding*  1
-      *message-window-gravity     :center)
+      *message-window-gravity*    :top)
+
 (setf *input-window-gravity* :center)
+(setq *ignore-wm-inc-hints* t)
+
+
+;;; frame.lisp ends here
